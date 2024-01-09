@@ -1,0 +1,106 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Prevents any horizontal scroll */
+  }
+  
+  /* Full height split screen layout */
+  #left-panel, #right-panel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align text to the left for left-panel */
+    padding: 0 4%; /* Padding for text */
+  }
+  
+  #left-panel {
+    left: 0;
+    background-color: #000; /* Black background for left panel */
+    color: #fff; /* White text color */
+    overflow: hidden; /* Ensures text sliding in does not show outside the panel */
+  }
+  
+  #right-panel {
+    right: 0;
+    background-color: #fff; /* White background for right panel */
+    align-items: flex-end; /* Align text to the right for right-panel */
+    overflow: hidden; /* Ensures text sliding in does not show outside the panel */
+  }
+  
+  #name-container h1, #name-container h2 {
+    font-size: 5vw;
+    opacity: 0;
+    /* Make sure this is enough to completely hide the text off-screen */
+    transform: translateX(-150%);
+  }
+  
+  #bio {
+    font-size: 1.5vw;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  
+  #title-container h2 {
+    font-size: 2vw;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  }
+  
+  /* Animation classes */
+  .slide-in {
+    animation: slideIn 0.5s forwards;
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s forwards;
+  }
+  
+  /* Keyframes for animations */
+  @keyframes slideIn {
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    #left-panel, #right-panel {
+      width: 100%;
+      height: 50%;
+      align-items: center;
+    }
+  
+    #right-panel {
+      justify-content: flex-start;
+      padding-top: 10%; /* Adjust padding for mobile */
+    }
+  
+    #name-container h1, #name-container h2 {
+      font-size: 10vw;
+    }
+  
+    #bio, #title-container h2 {
+      font-size: 4vw;
+    }
+  }
+  
